@@ -1,0 +1,80 @@
+# This is a response file for the Fusion Middleware Upgrade Assistant.
+# Individual component upgrades are performed in the order they are described here.
+# Each upgrade is introduced by a section header containing the name of the
+# component and name of the upgrade plugin. The form of the section header is
+# [ComponentName.PluginName]
+# These names can be found in the Upgrade Descriptor files for the components.
+
+# Individual input lines consist of a name, an equal sign, and a value.
+# The name is in two parts separated by a period.  The first part is the "name"
+# attribute from the Descriptor File XML tag by which the plugin refers to the value.
+# The second part of the name identifies a field within that value.  Some input
+# types have only one field, while other types can have half a dozen.   Do not
+# intermix input lines that apply to different XML tags.
+
+[GENERAL]
+# This is the file format version number.  Do not change the next line.
+fileFormatVersion = 3
+
+# The next section contains the information for performing a schema
+# upgrade on Oracle Data Integrator, as described in the Upgrade
+# Descriptor file located at
+#   /u01/oracle/mwh/odi/plugins/upgrade/odi.xml
+# Do not change the next line.
+[ODI.ODI1]
+# The following number uniquely identifies this instance of an
+# upgrade plugin.  Do not change it.
+pluginInstance = 12
+
+# The next few lines describe a database connection.
+#  "Specify the database containing the ODI schema."
+# Specifies the type of database.  Supported types for this product are
+#   Oracle Database, Oracle Database enabled for edition-based redefinition, Microsoft SQL Server, IBM DB2, MySQL
+ODI.databaseType = Oracle Database
+# Specifies the database connection string for the DBA user.
+# The format depends upon the database type.
+ODI.databaseConnectionString = 0.0.0.0:1521/pdb1.testoacprivates.testoacvcn.oraclevcn.com			##******************************* DB STRING
+# Specifies the database connection string for the user schema.
+# The format depends upon the database type.
+ODI.schemaConnectionString = 0.0.0.0:1521/pdb1.testoacprivates.testoacvcn.oraclevcn.com			##******************************* DB STRING
+# Specifies the name of the schema or database user
+ODI.schemaUserName = OCI_ODI_REPO										##*******************************TARGET REPO SCHEMA
+# Specifies the password for the schema, in encrypted form.
+# To specify a different password in cleartext, use the "cleartextSchemaPassword" keyword instead:
+ ODI.cleartextSchemaPassword = password									##*******************************TARGET REPO SCHEMA PASSWORD
+#ODI.encryptedSchemaPassword = 05BAD2AEB01E4A4BFE8B489BAC9F303DBCD0FD57433683F5CF
+# Specifies the name of the database administrator account.
+ODI.dbaUserName = sys as sysdba
+# Specifies the password for the database administrator account, in encrypted form.
+# To specify a different password in cleartext, use the "cleartextDbaPassword" keyword
+# instead:
+ ODI.cleartextDbaPassword = password										##*******************************TARGET REPO SYS DB PASSWORD
+#ODI.encryptedDbaPassword = 05ABF04EA39DDCD0E0042582BE80DA2854E638617F55EA4E5C
+
+# Specifies the choice for a yes/no option:
+#  "&Replace all KMs with latest versions"
+ODI_KM.option = yes
+
+# Specifies the choice for a yes/no option:
+#  "Upgrade topology and security &metadata"
+ODI_TOPOLOGY.option = yes
+
+# Specifies the choice for a yes/no option:
+#  "Upgrade repository to use &GUIDs (upgrade from 11g only)"
+ODI_GUID.option = yes
+
+# Specifies the choice for a yes/no option:
+#  "&Upgrade interfaces to 12c mappings (upgrade from 11g only)"
+ODI_SDK.option = yes
+
+# Specifies the choice for a yes/no option:
+#  "Use &AES-128 encryption algorithm"
+ODI_AES.option = yes
+
+# The next line specifies a string value:
+#  "ODI Supervisor &User Name:"
+ODI_SUPER_NAME.string = SUPERVISOR									##*******************************TARGET ODI SUPERVISOR NAME
+# Specifies a password, in encrypted form.  To specify a
+# different password in cleartext, use the "cleartextPassword" keyword instead:
+ ODI_SUPER_PASSWORD.cleartextPassword = password							##*******************************TARGET ODI SUPERVISOR PASSWORD
+#ODI_SUPER_PASSWORD.encryptedPassword = 0588AD09B9EF3160181B66FB61ABD72CA1102E2FAF29A57222
